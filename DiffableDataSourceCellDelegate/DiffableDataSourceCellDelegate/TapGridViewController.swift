@@ -21,8 +21,10 @@ class TapGridViewController: UIViewController {
         mutating func incrementLabelCount() {
             numberOfTaps += 1
         }
+        
+        var uuid = UUID()
     }
-    
+        
     var cellItems = [CellItem(numberOfTaps: 0)]
     
     var dataSource: UICollectionViewDiffableDataSource<Section, CellItem>!
@@ -61,6 +63,8 @@ class TapGridViewController: UIViewController {
             cell.delegate = self
             
             cell.index = indexPath.row
+            
+            cell.numberOfTapsLabel.text = String(item.numberOfTaps)
         })
         
         dataSource = UICollectionViewDiffableDataSource<Section, CellItem>(collectionView: tapGridCollectionView, cellProvider: { (collectionView: UICollectionView, indexPath: IndexPath, item: CellItem) -> UICollectionViewCell? in
@@ -85,12 +89,24 @@ class TapGridViewController: UIViewController {
 
 extension TapGridViewController: TapLabelCollectionViewCellDelegate {
     func incrementNumberOfTaps(index: Int) {
+        
         cellItems[index].incrementLabelCount()
+        
+        cellItems.append(CellItem(numberOfTaps: 0))
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellItem>()
          
+        snapshot.appendSections([.main])
+        
         snapshot.appendItems(cellItems)
         
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension TapGridViewController.CellItem: Equatable {
+    
+    static func ==(lhs: TapGridViewController.CellItem, rhs: TapGridViewController.CellItem) -> Bool {
+        return lhs.numberOfTaps == rhs.numberOfTaps && lhs.uuid == rhs.uuid
     }
 }

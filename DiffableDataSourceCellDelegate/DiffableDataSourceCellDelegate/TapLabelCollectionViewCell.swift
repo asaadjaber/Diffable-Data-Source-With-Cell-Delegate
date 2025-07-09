@@ -13,7 +13,7 @@ protocol TapLabelCollectionViewCellDelegate: AnyObject {
 
 class TapLabelCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var numberOfTapsLabel: UILabel!
+    var numberOfTapsLabel: UILabel!
     
     var delegate: TapLabelCollectionViewCellDelegate?
     
@@ -21,6 +21,15 @@ class TapLabelCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        numberOfTapsLabel = UILabel()
+        numberOfTapsLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(numberOfTapsLabel)
+        NSLayoutConstraint.activate([
+            numberOfTapsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            numberOfTapsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+        
         setUpTapGestureRecognizer()
     }
     
@@ -32,6 +41,7 @@ class TapLabelCollectionViewCell: UICollectionViewCell {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(incrementNumberOfTaps))
         print("numberOfTapsLabel", numberOfTapsLabel)
         numberOfTapsLabel.addGestureRecognizer(tapGestureRecognizer)
+        numberOfTapsLabel.isUserInteractionEnabled = true
     }
     
     @objc func incrementNumberOfTaps() {

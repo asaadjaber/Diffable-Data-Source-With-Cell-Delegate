@@ -33,22 +33,7 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eHV-4W-Il0">
                                             <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qml-gp-geb">
-                                                    <rect key="frame" x="43" y="53.666666666666657" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Qml-gp-geb" firstAttribute="centerY" secondItem="eHV-4W-Il0" secondAttribute="centerY" id="Jyh-5R-gAm"/>
-                                                <constraint firstItem="Qml-gp-geb" firstAttribute="centerX" secondItem="eHV-4W-Il0" secondAttribute="centerX" id="wde-WW-uwT"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="numberOfTapsLabel" destination="Qml-gp-geb" id="mgD-Bs-t7w"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
